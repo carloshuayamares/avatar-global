@@ -20,5 +20,10 @@ router.get('/getAllTeams', [
     CheckInControllers.getAllTeams,
 ])
 
+router.get('/match', [
+    CheckInControllers.match,
+])
+
+
 
 module.exports = router

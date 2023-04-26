@@ -11,22 +11,22 @@ class Groups extends Component {
   render() {
 
     const _groups = {
-        groupA: [<span>Grupo A</span>, ],
-        groupB: [<span>Grupo B</span>, ],
-        groupC: [<span>Grupo C</span>, ],
-        groupD: [<span>Grupo D</span>, ],
-        groupE: [<span>Grupo E</span>, ],
-        groupF: [<span>Grupo F</span>, ],
-        groupG: [<span>Grupo G</span>, ],
-        groupH: [<span>Grupo H</span>, ],
+        groupA: [<br></br>, <h2><span>Grupo A</span></h2>, ],
+        groupB: [<br></br>, <h2><span>Grupo B</span></h2>, ],
+        groupC: [<br></br>, <h2><span>Grupo C</span></h2>, ],
+        groupD: [<br></br>, <h2><span>Grupo D</span></h2>, ],
+        groupE: [<br></br>, <h2><span>Grupo E</span></h2>, ],
+        groupF: [<br></br>, <h2><span>Grupo F</span></h2>, ],
+        groupG: [<br></br>, <h2><span>Grupo G</span></h2>, ],
+        groupH: [<br></br>, <h2><span>Grupo H</span></h2>, ],
     }
 
     const groupsLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
     if(this.props.data){
         for (let pais of this.props.data) {
-            var name = pais.name_en;
-            var name_fa = pais.name_fa;
+            // var name = pais.name_en;
+            // var name_fa = pais.name_fa;
             var flag = pais.flag;
             var fifa_code = pais.fifa_code;
             var groups = pais.groups;

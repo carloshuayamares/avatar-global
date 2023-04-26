@@ -15,10 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       foo: 'bar',
-      resumeData: {},
-      mensaje: '',
-      teams: [],
       allTeams: {},
+      matches: {}
     };
 
     ReactGA.initialize('UA-110570651-1');
@@ -32,7 +30,6 @@ class App extends Component {
       dataType:'json',
       cache: false,
       success: function(data){
-        console.log(data.data)
         this.setState({allTeams: data});
       }.bind(this),
       error: function(xhr, status, err){
@@ -42,25 +39,25 @@ class App extends Component {
     });
   }
 
-
-  // getDataFixture(){
-  //   $.ajax({
-  //     type: 'get',
-  //     url:'http://localhost:8000/getAllTeams',
-  //     success: function(response) {
-  //       console.log(response.data.data)
-  //       this.setState({teams: `${response.data}`});
-  //     }.bind(this),
-  //     error: function(xhr, status, err){
-  //       console.log(err);
-  //       alert(err);
-  //     },
-  //   });
-  // }
+  getAllMatches(){
+    $.ajax({
+      url:'/matches.json',
+      dataType:'json',
+      cache: false,
+      success: function(data){
+        this.setState({matches: data});
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.log(err);
+        alert(err);
+      }
+    });
+  }
 
   async componentDidMount(){
     // this.getDataFixture();
     this.getAllTeams();
+    this.getAllMatches();
   }
 
   render() {
@@ -70,7 +67,7 @@ class App extends Component {
         <Header data={this.state.allTeams.data}/>
         <Paises data={this.state.allTeams.data}/>
         <Groups data={this.state.allTeams.data}/>
-        <Fixture data={this.state.allTeams.data}/>
+        <Fixture data={this.state.matches.data}/>
 
 
         {/* <About data={this.state.resumeData.main}/>

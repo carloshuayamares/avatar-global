@@ -8,6 +8,7 @@ import Header from './Components/Header';
 import Paises from './Components/Paises';
 import Groups from './Components/Groups';
 import Fixture from './Components/Fixture';
+import Footer from './Components/Footer';
 
 class App extends Component {
 
@@ -16,12 +17,28 @@ class App extends Component {
     this.state = {
       foo: 'bar',
       allTeams: {},
-      matches: {}
+      matches: {},
+      resumeData: {},
     };
 
     ReactGA.initialize('UA-110570651-1');
     ReactGA.pageview(window.location.pathname);
 
+  }
+
+  getResumeData(){
+    $.ajax({
+      url:'/resumeData.json',
+      dataType:'json',
+      cache: false,
+      success: function(data){
+        this.setState({resumeData: data});
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.log(err);
+        alert(err);
+      }
+    });
   }
 
   getAllTeams(){
@@ -55,7 +72,7 @@ class App extends Component {
   }
 
   async componentDidMount(){
-    // this.getDataFixture();
+    this.getResumeData();
     this.getAllTeams();
     this.getAllMatches();
   }
@@ -68,11 +85,7 @@ class App extends Component {
         <Paises data={this.state.allTeams.data}/>
         <Groups data={this.state.allTeams.data}/>
         <Fixture data={this.state.matches.data}/>
-
-
-        {/* <About data={this.state.resumeData.main}/>
-        <Portfolio data={this.state.resumeData.portfolio}/>
-        <Footer data={this.state.resumeData.main}/> */}
+        <Footer data={this.state.resumeData.main}/>
       </div>
     );
   }

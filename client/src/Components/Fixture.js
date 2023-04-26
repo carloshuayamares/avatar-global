@@ -25,27 +25,24 @@ class Groups extends Component {
         
         for (let match of this.props.data) {
 
-            let home_flag = match.home_flag
-            let away_flag = match.away_flag
-
+            let { home_flag, away_flag } = match
             let { home_team_en, away_team_en } = match
             let { home_score, away_score } = match
             let { local_date } = match
-
             let { group, id } = match
 
-            let homeFlag_img = <li><img src={home_flag}/></li>
-            let awayFlag_img = <li><img src={away_flag}/></li>
+            let homeFlag_img = <li><img className='flag-h3' src={home_flag}/></li>
+            let awayFlag_img = <li><img className='flag-h3' src={away_flag}/></li>
 
             for (let level of rondas) {
                 if (level === group) {
                     _groups[`${level}`].push(
-                        <div id={id} className={level}>
-                            <Row>
+                        <div id={level + id} className={level}>
+                            <Row className='level-cup'>
                                 <Col sm={4}></Col>
-                                <Col sm={1}> <ul>{homeFlag_img}</ul><h4>{home_team_en}</h4> </Col>
+                                <Col sm={1}> <br></br><ul>{homeFlag_img}</ul><h4>{home_team_en}</h4> </Col>
                                 <Col sm={2}> <br></br><h4>{home_score} - {away_score}</h4><br></br> {local_date} </Col>
-                                <Col sm={1}> <ul>{awayFlag_img}</ul><h4>{away_team_en}</h4> </Col>
+                                <Col sm={1}> <br></br><ul>{awayFlag_img}</ul><h4>{away_team_en}</h4> </Col>
                             </Row>
                             <br></br>
                         </div>
@@ -57,7 +54,11 @@ class Groups extends Component {
         }
 
         for (let lvl of rondas) {
-            _matches.push(_groups[lvl])
+            _matches.push(
+                <Row>
+                    <div id={"group" + lvl}>{_groups[lvl]}</div>
+                </Row>
+            )
         }
     }
 
@@ -71,7 +72,6 @@ class Groups extends Component {
             </div>
             <Container>
                 {_matches}
-
             </Container>
         </section>
     );

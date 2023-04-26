@@ -20,31 +20,33 @@ class Paises extends Component {
             var fifa_code = pais.fifa_code;
             var groups = pais.groups;
             var id = pais.id;
-            var flag_img = <li key={id}><img src={flag}/></li>
+            var flag_img = <li key={id}><img className='flag-h1' src={flag}/></li>
    
             if (id !== "0") {
                 allFlags.push(
-                    <Row>
-                        <Col>
-                            <div className="banner-text">
-                                <h2 className="responsive-headline">{name_fa}</h2>
-                                <h1 className="responsive-headline">{name}.</h1>
-                                <h3>Pertenezco al <span>Grupo {groups}</span>.</h3>
-                                <ul className="social">{flag_img}</ul>
-                                <h4>{fifa_code}</h4>
-                                <hr/>
-                            </div>
-                        </Col>
-                    </Row>
+                    <Col sm={3}>
+                        <div className='flags'>
+                            <h2>{name} / {name_fa}</h2>
+                            <ul>{flag_img}</ul>
+                            <h4>{fifa_code}</h4>
+                            <hr/>
+                        </div>
+                    </Col>
                 )
             }
          }
        }
 
     return (
-        <section className="paises" id='equipos'>
+        <section className="equipos" id='equipos'>
             <Container>
-                {allFlags}
+                <br></br>
+                <h1>Equipos que participaron en el mundial de futbol Qatar 2022</h1>
+                <br></br>
+                <Row>
+                    {allFlags}
+                </Row>
+
             </Container>
         </section>
     );

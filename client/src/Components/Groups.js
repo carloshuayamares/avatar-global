@@ -25,21 +25,22 @@ class Groups extends Component {
 
     if(this.props.data){
         for (let pais of this.props.data) {
-            // var name = pais.name_en;
+            var name = pais.name_en;
             // var name_fa = pais.name_fa;
             var flag = pais.flag;
             var fifa_code = pais.fifa_code;
             var groups = pais.groups;
             var id = pais.id;
-            var flag_img = <li key={id}><img src={flag}/></li>
+            var flag_img = <li><img className='flag-h2' src={flag}/></li>
    
             if (id !== "0") {
                 for (let letter of groupsLetter) {
                     if (letter === groups) {
                         _groups[`group${letter}`].push(
-                            <div>
-                                <ul>{flag_img}</ul>
+                            <div className='group-paises-in'>
                                 <h4>{fifa_code}</h4>
+                                <ul>{flag_img}</ul>
+                                <h5>{name}</h5>
                             </div>
                         )
                         continue
@@ -61,16 +62,16 @@ class Groups extends Component {
             </div>
             <Container>
                 <Row>
-                    <Col sm={3}>{_groups.groupA} <hr/> </Col>
-                    <Col sm={3}>{_groups.groupB} <hr/> </Col>
-                    <Col sm={3}>{_groups.groupC} <hr/> </Col>
-                    <Col sm={3}>{_groups.groupD} <hr/> </Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupA} <br></br></Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupB} <br></br></Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupC} <br></br></Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupD} <br></br></Col>
                 </Row>
                 <Row>
-                    <Col sm={3}>{_groups.groupE} <hr/> </Col>
-                    <Col sm={3}>{_groups.groupF} <hr/> </Col>
-                    <Col sm={3}>{_groups.groupG} <hr/> </Col>
-                    <Col sm={3}>{_groups.groupH} <hr/> </Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupE} <br></br></Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupF} <br></br></Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupG} <br></br></Col>
+                    <Col sm={3} className='group-paises' >{_groups.groupH} <br></br></Col>
                 </Row>
 
             </Container>

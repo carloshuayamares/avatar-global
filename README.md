@@ -9,4 +9,4 @@ Para ejecutar el servicio de frontend ejecutar el siguiente comando en la raiz:
 Para ejecutar el servicio de backend ejecutar el siguiente comando en la raiz:
 
     cd server
-    npm dev
+    npm run dev

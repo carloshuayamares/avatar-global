@@ -5,6 +5,9 @@ import $ from 'jquery';
 import "./App.css";
 
 import Header from './Components/Header';
+import Paises from './Components/Paises';
+import Groups from './Components/Groups';
+import Fixture from './Components/Fixture';
 
 class App extends Component {
 
@@ -65,6 +68,11 @@ class App extends Component {
       <div className="App">
         <h1>{this.state.mensaje}</h1>
         <Header data={this.state.allTeams.data}/>
+        <Paises data={this.state.allTeams.data}/>
+        <Groups data={this.state.allTeams.data}/>
+        <Fixture data={this.state.allTeams.data}/>
+
+
         {/* <About data={this.state.resumeData.main}/>
         <Portfolio data={this.state.resumeData.portfolio}/>
         <Footer data={this.state.resumeData.main}/> */}
